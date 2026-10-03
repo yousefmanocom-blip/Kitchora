@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f141d">
+  <title>كيتشورا | Kitchora</title>
+  <meta name="description" content="أكلك جاهز على التسخين والطهي الفوري، أطلب الآن عبر الواتساب بأعلى جودة! توصيل 24 ساعة.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <meta property="og:title" content="كيتشورا | جاهز على التسخين ودليفري 24 ساعة">
+  <meta property="og:description" content="أكلك جاهز على التسخين والطهي الفوري، أطلب الآن عبر الواتساب بأعلى جودة!">
+  <!-- ملاحظة: لازم og:image يبقى لينك كامل (مثال: https://موقعك.com/images/logo.png) عشان يظهر في مشاركة الفيسبوك والواتساب -->
+  <meta property="og:image" content="images/logo.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- الخطوط والأيقونات بتتحمل بدون ما تعطل ظهور الصفحة -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </noscript>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="brand">
+        <img src="images/logo.png" alt="كيتشورا" class="logo-img" width="52" height="52" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 60 60%27%3E%3Crect width=%2760%27 height=%2760%27 fill=%27%2310b981%27/%3E%3Ctext x=%2730%27 y=%2742%27 font-size=%2734%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27Arial%27%3EK%3C/text%3E%3C/svg%3E'">
+        <div class="brand-text">
+          <h1 class="brand-title" data-i18n="brand_title">كيتشورا</h1>
+          <span class="brand-subtitle" data-i18n="brand_subtitle">جاهز على التسخين ودليفري 24 ساعة</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button id="langToggleBtn" class="btn btn-outline" aria-label="Change language">
+          <i class="fa-solid fa-globe"></i>
+          <span id="langText">English</span>
+        </button>
+
+        <button id="cartBtn" class="btn btn-primary cart-btn" aria-label="السلة">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="btn-label" data-i18n="cart">السلة</span>
+          <span id="cartCount" class="badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <span class="hero-tag" data-i18n="hero_tag">✨ تجربة طعام فريدة ومريحة</span>
+      <h2 data-i18n="hero_title">أكلك جاهز على التسخين وبأعلى جودة</h2>
+      <p data-i18n="hero_desc">نوفر لك أشهى الوجبات والمصنعات واللحوم والخضراوات المجهزة للتسخين والطهي الفوري، وتوصيل سريع على مدار 24 ساعة!</p>
+
+      <div class="hero-badges">
+        <div class="h-badge"><i class="fa-solid fa-truck-fast"></i> <span data-i18n="delivery_24">توصيل 24 ساعة</span></div>
+        <div class="h-badge"><i class="fa-solid fa-fire-burner"></i> <span data-i18n="ready_heat">جاهز على التسخين</span></div>
+        <div class="h-badge"><i class="fa-solid fa-award"></i> <span data-i18n="premium_quality">جودة إكسترا Premium</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search & Filter Controls Section -->
+  <section class="controls-section">
+    <div class="container">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="ابحث عن وجبة، لحوم، حلويات..." data-i18n-placeholder="search_placeholder" autocomplete="off" enterkeyhint="search" aria-label="بحث">
+      </div>
+
+      <div class="categories-scroll">
+        <div class="categories-wrapper" id="categoriesContainer">
+          <!-- Categories rendered dynamically -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu-section">
+    <div class="container">
+      <div class="section-header">
+        <h3 id="currentCategoryTitle">جميع المنتجات</h3>
+        <span id="itemCountLabel" class="item-count">0 صنف</span>
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+        <!-- Menu cards dynamically generated -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="كيتشورا" class="footer-logo" width="50" height="50" loading="lazy" onerror="this.onerror=null;this.style.display='none'">
+        <div>
+          <h4>كيتشورا - Kitchora</h4>
+          <p class="footer-tagline" data-i18n="footer_tagline">خدمة توصيل سريعة 24/7 - أكل بيتي ومصنعات بلمسة احترافية.</p>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/19iSdgms3x/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook" title="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.tiktok.com/@kitchora.eg" target="_blank" rel="noopener noreferrer" class="social-btn tiktok" aria-label="TikTok" title="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://wa.me/201031898747" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp" aria-label="WhatsApp" title="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="developer-credit">
+      <p>تم تصميم وتطوير الموقع بواسطة <span class="dev-name">Youssef Mahmoud</span> ✨</p>
+      <div class="dev-links">
+        <a href="https://wa.me/201006267386" target="_blank" rel="noopener noreferrer" class="dev-btn" title="تواصل عبر الواتساب">
+          <i class="fa-brands fa-whatsapp"></i> تواصل معي
+        </a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>&copy; 2026 جميع الحقوق محفوظة لـ <strong>كيتشورا</strong></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/201020002397" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="WhatsApp Contact">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="floating-tooltip">تواصل معنا المباشر</span>
+  </a>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Cart Drawer Overlay & Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cart-header">
+      <div class="cart-title">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <h3 data-i18n="shopping_cart">سلة الطلبات</h3>
+      </div>
+      <button class="close-cart" id="closeCartBtn" aria-label="إغلاق">&times;</button>
+    </div>
+
+    <div class="cart-items" id="cartItemsContainer">
+      <!-- Cart items populated dynamically -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span data-i18n="total">الإجمالي:</span>
+        <span id="cartTotalAmount">0 ج.م</span>
+      </div>
+
+      <div class="checkout-form">
+        <input type="text" id="customerName" placeholder="الاسم بالكامل" data-i18n-placeholder="name_placeholder" autocomplete="name">
+        <input type="text" id="customerAddress" placeholder="العنوان التفصيلي للتوصيل" data-i18n-placeholder="address_placeholder" autocomplete="street-address">
+        <textarea id="orderNotes" rows="2" placeholder="أي ملاحظات إضافية على الطلب..." data-i18n-placeholder="notes_placeholder"></textarea>
+      </div>
+
+      <button id="sendWhatsappBtn" class="btn btn-whatsapp-submit">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span data-i18n="send_order_whatsapp">إرسال الطلب عبر الواتساب</span>
+      </button>
+    </div>
+  </aside>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
